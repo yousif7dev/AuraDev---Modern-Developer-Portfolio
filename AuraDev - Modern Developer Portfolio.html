@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alex Morgan | Software Architect & Product Engineer</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <style>
+    :root {
+      --bg-color: #0c0f17;
+      --card-bg: rgba(23, 28, 41, 0.7);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      --text-main: #f3f4f6;
+      --text-muted: #94a3b8;
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Navbar */
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(12, 15, 23, 0.8);
+      z-index: 100;
+      border-bottom: 1px solid var(--card-border);
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #fff;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--accent-gradient);
+      color: #fff;
+      box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(59, 130, 246, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 120px 0 80px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      border-radius: 50px;
+      background: rgba(59, 130, 246, 0.1);
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      color: #60a5fa;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      background: var(--accent-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* Stats Banner */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 40px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      margin: 40px 0 100px;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .stat-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    /* Section Global */
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      margin-bottom: 12px;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      color: var(--text-muted);
+      text-align: center;
+      margin-bottom: 50px;
+      font-size: 1rem;
+    }
+
+    /* Projects Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      margin-bottom: 100px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 30px;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(59, 130, 246, 0.4);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      margin-bottom: 20px;
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    /* Contact Callout */
+    .contact-cta {
+      background: linear-gradient(180deg, rgba(23, 28, 41, 0.8) 0%, rgba(12, 15, 23, 1) 100%);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 60px 30px;
+      text-align: center;
+      margin-bottom: 100px;
+    }
+
+    .contact-cta h2 {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-cta p {
+      color: var(--text-muted);
+      max-width: 500px;
+      margin: 0 auto 30px;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--card-border);
+      padding: 40px 0;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .social-links a {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+      transition: color 0.2s ease;
+    }
+
+    .social-links a:hover {
+      color: #fff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 80px 0 50px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">AM<span>.dev</span></a>
+        <ul class="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <a href="#contact" class="btn btn-primary" style="padding: 8px 16px; font-size: 0.85rem;">Let's Talk</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div class="hero-badge">
+        <i class="fa-solid fa-circle" style="font-size: 8px; color: #10b981;"></i> Available for New Projects
+      </div>
+      <h1>Engineering High-Performance <br><span>Digital Solutions</span></h1>
+      <p>I design, architect, and build modern web applications, scalable platforms, and intuitive interfaces with clean and maintainable code.</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary"><i class="fa-solid fa-arrow-down"></i> View Portfolio</a>
+        <a href="#contact" class="btn btn-outline"><i class="fa-regular fa-envelope"></i> Get in Touch</a>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stat-item">
+        <h3>8+</h3>
+        <p>Years Experience</p>
+      </div>
+      <div class="stat-item">
+        <h3>50+</h3>
+        <p>Projects Delivered</p>
+      </div>
+      <div class="stat-item">
+        <h3>99%</h3>
+        <p>Client Satisfaction</p>
+      </div>
+      <div class="stat-item">
+        <h3>24/7</h3>
+        <p>Dedicated Support</p>
+      </div>
+    </div>
+
+    <!-- Featured Projects -->
+    <section id="projects">
+      <h2 class="section-title">Selected Projects</h2>
+      <p class="section-subtitle">A showcase of production-ready systems and custom software.</p>
+      
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <h3>Enterprise SaaS Portal</h3>
+          <p>Real-time telemetry and management dashboard built for multi-tenant analytics and reporting.</p>
+          <div class="tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Next.js</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-bolt"></i></div>
+          <h3>E-Commerce & Billing Engine</h3>
+          <p>High-volume transaction platform featuring custom payment gateway routing and inventory automation.</p>
+          <div class="tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Tailwind</span>
+            <span class="tag">Stripe API</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <h3>Cross-Platform Mobile Hub</h3>
+          <p>Native-performance mobile application providing offline-first capabilities and cloud synchronization.</p>
+          <div class="tags">
+            <span class="tag">Kotlin</span>
+            <span class="tag">REST API</span>
+            <span class="tag">SQLite</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta" id="contact">
+      <h2>Have a Project in Mind?</h2>
+      <p>Let's collaborate to build reliable, high-end software that solves real business challenges.</p>
+      <a href="mailto:hello@example.com" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Send a Message</a>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="social-links">
+        <a href="#"><i class="fa-brands fa-github"></i></a>
+        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+      </div>
+      <p>&copy; 2026 Alex Morgan. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
